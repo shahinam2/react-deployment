@@ -273,8 +273,6 @@
 //   }
 // };
 
-
-
 // setTimeout(handler)
 // console.log("memebers outside:", fetchMembers());
 // fetchMembers()
@@ -298,3 +296,16 @@
 // }
 // getMember()
 // export { getMembers, getMember }
+
+var obj;
+
+fetch("https://jsonplaceholder.typicode.com/posts/1")
+  .then((res) => res.json())
+  .then((data) => {
+    obj = data;
+  })
+  .then(() => {
+    console.log(obj);
+  });
+
+console.log(obj);

@@ -11,6 +11,7 @@ import "./App.css";
 
 function App() {
   const [members, setMembers] = useState();
+  const [memberToDelete, setMemberToDelete] = useState();
 
   useEffect(() => {
     async function getMembers() {
@@ -27,8 +28,8 @@ function App() {
         <Route path="/" element={<Home />}>
           <Route index element={<Filler />} />
           <Route path="home" element={<Filler />} />
-          <Route path="team" element={<Team members={members}/>}>
-            <Route path=":memberId" element={<Member members={members} />} />
+          <Route path="team" element={<Team members={members} memberToDelete={memberToDelete}/>}>
+            <Route path=":memberId" element={<Member members={members} setMemberToDelete={setMemberToDelete} />} />
           </Route>
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />

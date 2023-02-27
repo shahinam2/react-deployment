@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 // import { getMember } from "../data";
 import { useEffect, useState } from "react";
 
-function Member({ members }) {
+function Member({ members, setMemberToDelete }) {
   const [member, setMember] = useState("");
   const navigate = useNavigate();
   // we use the useParams hook to get the memberId from the URL
@@ -23,6 +23,7 @@ function Member({ members }) {
   console.log("memeber in member.js:", member);
 
   function handleClick() {
+    setMemberToDelete(member.id);
     setMember(null);
     return navigate("/team", { replace: true });
   }

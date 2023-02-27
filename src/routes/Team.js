@@ -1,7 +1,7 @@
 import { NavLink, Outlet, useSearchParams } from "react-router-dom";
 // import { getMembers } from "../data";
 
-function Team({ members }) {
+function Team({ members, memberToDelete }) {
   const [searchParams, setSearchParams] = useSearchParams();
   // const members = getMembers();
   // console.log("members:", members);
@@ -36,6 +36,7 @@ function Team({ members }) {
               let name = member.name.toLowerCase();
               return name.startsWith(filter.toLowerCase());
             })
+            .filter((member) => member.id !== memberToDelete)
             .map((member) => (
               <NavLink
                 style={{
@@ -50,7 +51,7 @@ function Team({ members }) {
               </NavLink>
             ))}
         </nav>
-        <Outlet  />
+        <Outlet />
       </div>
     );
   }
